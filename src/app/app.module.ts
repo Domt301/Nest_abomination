@@ -1,4 +1,4 @@
-import { Module } from '../framework';
+import { Module } from '@nestjs/common';
 import { TABLE_NAME, USER_REPOSITORY } from './tokens';
 import { DynamoUserRepository } from './users/dynamo-user.repository';
 import { UsersController } from './users/users.controller';

@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
+import { Inject, Injectable } from '@nestjs/common';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
-import { Inject, Injectable } from '../../framework';
 import { TABLE_NAME } from '../tokens';
 import { CreateUserDto, UpdateUserDto, User, UserRepository } from './user.types';
 

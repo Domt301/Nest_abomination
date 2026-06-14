@@ -29,6 +29,18 @@ export class CrudApiStack extends cdk.Stack {
         runtime: Runtime.NODEJS_20_X,
         entry: path.join(__dirname, '../src/lambda/endpoint.ts'),
         handler: 'handler',
+        bundling: {
+          externalModules: [
+            '@aws-sdk/*',
+            '@nestjs/microservices',
+            '@nestjs/microservices/*',
+            '@nestjs/platform-express',
+            '@nestjs/websockets',
+            '@nestjs/websockets/*',
+            'class-transformer',
+            'class-validator',
+          ],
+        },
         environment: {
           TABLE_NAME: table.tableName,
           CONTROLLER_NAME: route.controllerName,

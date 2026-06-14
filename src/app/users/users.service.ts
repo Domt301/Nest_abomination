@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundError } from '../../framework';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { USER_REPOSITORY } from '../tokens';
 import { CreateUserDto, UpdateUserDto, User, UserRepository } from './user.types';
 
@@ -17,7 +17,7 @@ export class UsersService {
   async findOne(id: string): Promise<User> {
     const user = await this.users.findOne(id);
     if (!user) {
-      throw new NotFoundError('User');
+      throw new NotFoundException('User not found');
     }
 
     return user;
@@ -26,7 +26,7 @@ export class UsersService {
   async update(id: string, input: UpdateUserDto): Promise<User> {
     const user = await this.users.update(id, input);
     if (!user) {
-      throw new NotFoundError('User');
+      throw new NotFoundException('User not found');
     }
 
     return user;
